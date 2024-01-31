@@ -26,16 +26,16 @@ services:
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
 
   laravel-mysql:
-    image: mysql:8.0.33
-    command: --max_allowed_packet=32505856
-    container_name: "laravel-mysql"
-    volumes:
-      - ./docker/mysql:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=laravel
+    image: mysql:8.0.28
+    container_name: laravel-mysql
     ports:
-      - 3306:3306
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: kuri-db
+      TZ: "Asia/Tokyo"
+    volumes:
+      - .my.cnf:/etc/mysql/conf.d/my.cnf
 
   laravel-redis:
     image: redis:alpine
