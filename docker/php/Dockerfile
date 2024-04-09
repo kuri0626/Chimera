@@ -5,11 +5,14 @@ WORKDIR /src/Yii2
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+    zlib1g-dev \
+    libzip-dev \
     zip \
     unzip \
     p7zip \
-    git && \
-    rm -rf /var/lib/apt/lists/*
+    git \
+    && docker-php-ext-install pdo_mysql zip \
+    && rm -rf /var/lib/apt/lists/*
 
 # Composerのインストール
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
