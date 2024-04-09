@@ -62,10 +62,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $query = Country::find();
-        $countries = $query->orderBy('name')->all();
+        // $query = Country::find();
+        // $countries = $query->orderBy('name')->all();
         return $this->render('index', [
-            'countries' => $countries,
+            // 'countries' => $countries,
         ]);
     }
 
