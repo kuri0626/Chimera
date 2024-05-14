@@ -11,6 +11,7 @@ $this->title = 'Slot Application';
     <input type="button" value="stop" id="stop"/>
     <ul id="slot-results"></ul>
     <p id="result-message"></p>
+    <?= Html::img('@web/images/test.png', ['alt' => 'Test Image']) ?>
     <script>
         function clickButton() {
             var slotResults = document.getElementById("slot-results");

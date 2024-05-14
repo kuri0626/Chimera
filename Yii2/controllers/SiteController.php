@@ -62,10 +62,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        // $query = Country::find();
-        // $countries = $query->orderBy('name')->all();
         return $this->render('index', [
-            // 'countries' => $countries,
         ]);
     }
 
@@ -129,5 +126,27 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    /**
+     * PWAのmanifestを返す
+     */
+    public function actionManifest()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return [
+            "name" => "でかいいぬPWA",
+            "short_name" => "でかいいぬ",
+            "background_color" => "#FF00FF",
+            "icons" => [
+                [
+                    "src" => "../images/face.png",
+                    "sizes" => "256x256",
+                    "type" => "image/png"
+                ]
+            ],
+            "display" => "standalone",
+            "start_url" => "http://localhost"
+        ];
     }
 }
